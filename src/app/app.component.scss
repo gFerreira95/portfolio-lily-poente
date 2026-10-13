@@ -1,0 +1,19 @@
+
+@font-face {
+  font-family: 'Placard Next';
+  src: url('/assets/fonts/PlacardNextRegular.ttf') format('ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica World';
+  src: url('/assets/fonts/Helvetica-World-regular.ttf') format('ttf');
+  font-weight: normal;
+}
+
+.main-content {
+  min-height: calc(100vh - 100px); /* Altura da tela menos o header */
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}

@@ -1,0 +1,430 @@
+/* =========================================
+   LAYOUT GERAL (ONE-PAGE)
+   ========================================= */
+.one-page-container {
+  width: 100%;
+  background-color: var(--color-bg);
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+/* =========================================
+   1. CAPA (HERO) - REDESIGN WEB MODERNO
+   ========================================= */
+.hero-modern {
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  /* A sua textura de fundo maravilhosa */
+  background-image: url('/fundo-capa.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- HEADER & MENU ---------------- */
+.hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 4vw;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.logo-small img {
+  width: 90px; /* Logo discreto como marca do site */
+  height: auto;
+  transition: transform 0.3s ease;
+  
+  &:hover { 
+    transform: scale(1.05); 
+  }
+}
+
+.hero-nav {
+  display: flex;
+  gap: 2.5rem;
+
+  a {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-wine, #9e4251); /* Tom vinho */
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+    
+    &:hover { 
+      opacity: 0.5; 
+    }
+  }
+}
+
+/* ---------------- TÍTULO CENTRAL (ESCADA) ---------------- */
+.hero-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4vw;
+  position: relative;
+  z-index: 10;
+}
+
+.animate-title {
+  font-family: 'Helvetica World', 'Helvetica', 'Arial', sans-serif;
+  font-size: clamp(5rem, 10vw, 12rem);
+  color: #FDFCE4; /* Creme claro */
+  line-height: 0.85;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  
+  /* Configuração para a animação das palavras */
+  span {
+    display: block;
+    animation: fadeUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    text-shadow: 0px 10px 30px rgba(16, 15, 13, 0.4);
+  }
+
+  /* O Efeito "Escada" e o controle do tempo da animação */
+  .line-1 { padding-left: 0; animation-delay: 0.1s; }
+  .line-2 { 
+    padding-left:0vw; 
+    animation-delay: 0.3s; 
+    color: var(--color-accent, #c1c067); /* Destaque mostarda no meio */
+  } 
+  .line-3 { padding-left: 0vw; animation-delay: 0.5s; }
+}
+
+.animate-subtitle {
+  font-family: 'Placard Next', 'Helvetica', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  color: var(--color-wine, #9e4251);
+  margin-top: 2rem;
+  transform: translateX(50%);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.7s;
+}
+
+/* ---------------- INDICADOR DE SCROLL ---------------- */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 1s;
+
+  .text {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    font-size: 0.9rem;
+    color: var(--color-wine, #9e4251);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .mouse {
+    width: 24px;
+    height: 36px;
+    border: 2px solid var(--color-wine, #9e4251);
+    border-radius: 20px;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background-color: var(--color-wine, #9e4251);
+      border-radius: 50%;
+      animation: scrollWheel 2s infinite; /* A bolinha descendo */
+    }
+  }
+}
+
+/* ---------------- ANIMAÇÕES (KEYFRAMES) ---------------- */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollWheel {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 15px); opacity: 0; }
+}
+
+/* ---------------- RESPONSIVO MOBILE ---------------- */
+@media (max-width: 900px) {
+  .hero-header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .hero-nav {
+    display: none; /* Esconde o menu no telemóvel para um visual mais limpo */
+  }
+
+  .animate-title {
+    align-items: center;
+    text-align: center;
+    
+    /* Remove a escada no telemóvel para não quebrar a tela */
+    .line-1, .line-2, .line-3 {
+      padding-left: 0; 
+    }
+  }
+
+  .animate-subtitle {
+    text-align: center;
+    padding-left: 0;
+    margin-top: 1.5rem;
+  }
+}
+/* =========================================
+   2. MANIFESTO (SOBRE) - LAYOUT ASSIMÉTRICO
+   ========================================= */
+.manifesto-section {
+  background-color: var(--color-bg); /* O fundo creme (#f9f7e0) */
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 4vw;
+  box-sizing: border-box;
+}
+
+.manifesto-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  gap: 6rem;
+  align-items: stretch;
+}
+
+/* Esquerda: Título Rotacionado (Estilo Lombada) */
+.manifesto-sidebar {
+  flex: 0 0 100px; /* Mantém uma largura fixa fina */
+  display: flex;
+  justify-content: flex-end;
+  border-right: 2px solid var(--color-accent); /* Linha mostarda divisória */
+  padding-right: 2rem;
+
+  h2 {
+    font-family: 'Helvetica World', 'Helvetica', 'Arial', sans-serif;
+    font-size: 3.5rem;
+    color: var(--color-wine); /* Cor Vinho/Bordô */
+    margin: 0;
+    line-height: 0.9;
+    
+    /* Roda o texto a 90 graus (lê-se de baixo para cima) */
+    writing-mode: vertical-rl;
+    transform: rotate(180deg); 
+    white-space: nowrap;
+
+    span {
+      color: var(--color-accent); /* O mostarda para o "LILY POENTE" */
+    }
+  }
+}
+
+/* Direita: Textos Editoriais */
+.manifesto-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  
+  p {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    font-size: 1.4rem;
+    color: var(--color-dark); /* Quase preto */
+    line-height: 1.5;
+    margin: 0;
+    max-width: 800px; /* Evita que a linha de texto fique demasiado longa */
+  }
+
+  /* O primeiro parágrafo com a letra gigante */
+  .lead-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-wine);
+
+    .drop-cap {
+      font-family: 'Helvetica World', 'Helvetica', 'Arial', sans-serif;
+      float: left;
+      font-size: 5rem;
+      line-height: 0.8;
+      padding-top: 4px;
+      padding-right: 8px;
+      padding-left: 3px;
+      color: var(--color-accent);
+    }
+  }
+
+  /* A caixa de destaque final */
+  .highlight-box {
+    margin-top: 1rem;
+    padding: 1.5rem 2rem;
+    background-color: transparent;
+    border-left: 4px solid var(--color-wine);
+    font-style: italic;
+    font-size: 1.3rem;
+  }
+}
+
+/* =========================================
+   RESPONSIVO MOBILE (MANIFESTO)
+   ========================================= */
+@media (max-width: 900px) {
+  .manifesto-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .manifesto-sidebar {
+    border-right: none;
+    border-bottom: 2px solid var(--color-accent);
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+    justify-content: flex-start;
+    flex: auto;
+
+    h2 {
+      /* Volta o texto ao normal no telemóvel */
+      writing-mode: horizontal-tb;
+      transform: none;
+      font-size: 2.8rem;
+      text-align: left;
+    }
+  }
+
+  .manifesto-content {
+    gap: 1.5rem;
+    
+    .lead-text .drop-cap {
+      font-size: 3.5rem;
+    }
+  }
+}
+/* =========================================
+   4. CONTATO (RODAPÉ)
+   ========================================= */
+.contact-section {
+  /* Fundo mostarda/verde oliva, conforme a referência */
+  background-color: #c1c067; 
+  min-height: 70vh; /* Dá uma boa área de respiro ao rodapé */
+  display: flex;
+  align-items: center;
+  padding: 6rem 4vw;
+  box-sizing: border-box;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem; /* Espaçamento generoso entre o título e os dados */
+}
+
+/* Título Gigante */
+.contact-header {
+  h2 {
+    font-family: 'Helvetica World', 'Helvetica', 'Arial', sans-serif;
+    /* Tamanho fluido que se adapta a ecrãs grandes e pequenos */
+    font-size: clamp(4rem, 8vw, 8rem);
+    color: #f9f7e0; /* Creme claro */
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+}
+
+/* Organização dos Contactos */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  /* No computador, os contactos ficam lado a lado elegantemente */
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .label {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    font-size: 1.1rem;
+    color: #9e4251; /* Tom vinho */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+  }
+
+  .value {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    font-size: 2.2rem;
+    color: #9e4251; /* Tom vinho */
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    
+    /* Efeito subtil ao passar o rato (Hover) */
+    &:hover {
+      opacity: 0.7;
+      transform: translateX(5px); /* Dá um ligeiro "pulo" para a direita */
+    }
+  }
+}
+
+/* Ajustes Extra para Telemóvel (Mobile) */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 4rem 4vw;
+  }
+  
+  .contact-container {
+    gap: 4rem;
+  }
+
+  .contact-item .value {
+    font-size: 2rem;
+  }
+}

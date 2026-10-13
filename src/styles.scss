@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+:root {
+  /* Paleta Lily Poente Studio */
+  --color-bg: #f9f7e0;          /* Creme claro / Fundo principal */
+  --color-accent: #c1c067;      /* Mostarda / Verde Oliva claro */
+  --color-wine: #9e4251;        /* Vinho / Bordô profundo */
+  --color-dark: #100f0d;        /* Quase preto / Textos e sombras */
+
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
