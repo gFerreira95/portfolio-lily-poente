@@ -1,13 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable, of } from 'rxjs';
-
-export interface PortfolioItem {
-  id: string;
-  title: string;
-  category: string;
-  imageUrl: string;
-}
+import { Observable } from 'rxjs';
+import { PortfolioItem } from '../../../../core/models/portfolio.model';
+import { PortfolioService } from '../../../../core/services/portfolio.service';
 
 @Component({
   selector: 'app-gallery',
@@ -17,41 +12,20 @@ export interface PortfolioItem {
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent {
-  
-  // Controle do Lightbox
+  private portfolioService = inject(PortfolioService);
+
   selectedImage: string | null = null;
 
-  // Mock de Dados
-  portfolioItems$: Observable<PortfolioItem[]> = of([
-    {
-      id: '1',
-      title: 'Clube do Livro - Anne With an E',
-      category: 'Branding e design da marca',
-      imageUrl: '/clube-livro.png'
-    },
-    {
-      id: '2',
-      title: 'ARTE VISUAL',
-      category: 'Colagem Autoral',
-      imageUrl: '/arte-visual.png'
-    },
-    {
-      id: '3',
-      title: 'DESIGN DE POSTS',
-      category: 'Para as redes sociais',
-      imageUrl: '/posts.png'
-    }
-  ]);
+  // Agora busca direto do Spring Boot + MongoDB!
+  portfolioItems$: Observable<PortfolioItem[]> = this.portfolioService.getAll();
 
-  // Função para abrir a imagem no modal
   openLightbox(imageUrl: string): void {
     this.selectedImage = imageUrl;
-    document.body.style.overflow = 'hidden'; // Evita que a página role no fundo
+    document.body.style.overflow = 'hidden';
   }
 
-  // Função para fechar o modal
   closeLightbox(): void {
     this.selectedImage = null;
-    document.body.style.overflow = 'auto'; // Devolve o scroll à página
+    document.body.style.overflow = 'auto';
   }
 }

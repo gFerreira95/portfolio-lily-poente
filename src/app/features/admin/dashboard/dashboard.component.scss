@@ -1,0 +1,254 @@
+.admin-layout {
+  min-height: 100vh;
+  background-color: #f9f7e0;
+  color: #100f0d;
+}
+
+.admin-header {
+  background-color: #100f0d;
+  color: #f9f7e0;
+  padding: 1.5rem 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid #9e4251;
+
+  h1 {
+    font-family: 'Helvetica World', 'Helvetica', sans-serif;
+    font-size: 1.6rem;
+    margin: 0;
+    letter-spacing: 1.5px;
+  }
+
+  span {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    color: #c1c067;
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-outline {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    color: #f9f7e0;
+    border: 1px solid #c1c067;
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    border-radius: 4px;
+    letter-spacing: 1px;
+
+    &:hover {
+      background-color: #c1c067;
+      color: #100f0d;
+    }
+  }
+
+  .btn-logout {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    background-color: #9e4251;
+    color: #f9f7e0;
+    border: none;
+    padding: 0.55rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+}
+
+.admin-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 3rem 4vw;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Formulário Lateral */
+.form-card {
+  background-color: #100f0d;
+  color: #f9f7e0;
+  padding: 2rem;
+  border-radius: 8px;
+  position: sticky;
+  top: 2rem;
+
+  h2 {
+    font-family: 'Helvetica World', 'Helvetica', sans-serif;
+    font-size: 1.4rem;
+    color: #c1c067;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+
+    label {
+      font-family: 'Placard Next', 'Helvetica', sans-serif;
+      font-size: 0.9rem;
+      color: #c1c067;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+      font-family: 'Helvetica World', 'Helvetica', sans-serif;
+      padding: 0.75rem;
+      background-color: #f9f7e0;
+      color: #100f0d;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+  }
+
+  .preview-box {
+    margin: 1rem 0;
+    border: 2px solid #c1c067;
+    border-radius: 4px;
+    overflow: hidden;
+    max-height: 220px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  .status-msg {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    color: #c1c067;
+    margin-bottom: 1rem;
+  }
+
+  .form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    .btn-save {
+      padding: 0.9rem;
+      background-color: #9e4251;
+      color: #f9f7e0;
+      font-family: 'Helvetica World', 'Helvetica', sans-serif;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+
+    .btn-cancel {
+      padding: 0.7rem;
+      background-color: transparent;
+      color: #f9f7e0;
+      border: 1px solid #f9f7e0;
+      font-family: 'Placard Next', 'Helvetica', sans-serif;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+}
+
+/* Lista de Itens */
+.list-section {
+  h2 {
+    font-family: 'Helvetica World', 'Helvetica', sans-serif;
+    color: #9e4251;
+    margin: 0 0 1.5rem 0;
+  }
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.item-card {
+  background-color: #fff;
+  border: 1px solid rgba(16, 15, 13, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .item-info {
+    padding: 1rem;
+
+    .cat {
+      font-family: 'Placard Next', 'Helvetica', sans-serif;
+      color: #9e4251;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h3 {
+      font-family: 'Helvetica World', 'Helvetica', sans-serif;
+      color: #100f0d;
+      font-size: 1.2rem;
+      margin: 0.3rem 0 0 0;
+    }
+  }
+
+  .item-actions {
+    display: flex;
+    border-top: 1px solid rgba(16, 15, 13, 0.1);
+
+    button {
+      flex: 1;
+      padding: 0.75rem;
+      border: none;
+      font-family: 'Placard Next', 'Helvetica', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .btn-edit {
+      background-color: #c1c067;
+      color: #100f0d;
+    }
+
+    .btn-delete {
+      background-color: #9e4251;
+      color: #f9f7e0;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .admin-content {
+    grid-template-columns: 1fr;
+  }
+
+  .form-card {
+    position: static;
+  }
+}

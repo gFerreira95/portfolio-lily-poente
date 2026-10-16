@@ -1,0 +1,110 @@
+.login-page {
+  min-height: 100vh;
+  background-color: #f9f7e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-card {
+  background-color: #100f0d;
+  color: #f9f7e0;
+  width: 100%;
+  max-width: 420px;
+  padding: 3rem 2.5rem;
+  border-radius: 8px;
+  border-top: 6px solid #9e4251;
+  box-shadow: 0 15px 35px rgba(16, 15, 13, 0.25);
+
+  h1 {
+    font-family: 'Helvetica World', 'Helvetica', 'Arial', sans-serif;
+    font-size: 2.2rem;
+    color: #f9f7e0;
+    margin: 0;
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    color: #c1c067;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0.3rem 0 2.5rem 0;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+
+  label {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    font-size: 0.95rem;
+    color: #c1c067;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    font-family: 'Helvetica World', 'Helvetica', sans-serif;
+    padding: 0.85rem 1rem;
+    background-color: #f9f7e0;
+    color: #100f0d;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+
+    &:focus {
+      border-color: #9e4251;
+    }
+  }
+}
+
+.error-msg {
+  font-family: 'Placard Next', 'Helvetica', sans-serif;
+  color: #ff6b6b;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #9e4251;
+  color: #f9f7e0;
+  font-family: 'Helvetica World', 'Helvetica', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #b54d5e;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  font-family: 'Placard Next', 'Helvetica', sans-serif;
+  color: #c1c067;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,92 @@
+<div class="admin-layout">
+  <!-- Barra Superior -->
+  <header class="admin-header">
+    <div>
+      <h1>PAINEL LILY POENTE</h1>
+      <span>Gerenciamento da Galeria</span>
+    </div>
+    <div class="header-actions">
+      <a routerLink="/" class="btn-outline">Ver Site</a>
+      <button (click)="logout()" class="btn-logout">Sair</button>
+    </div>
+  </header>
+
+  <main class="admin-content">
+    <!-- Coluna Esquerda: Formulário de Criação / Edição -->
+    <section class="form-card">
+      <h2>{{ editingId ? 'EDITAR PROJETO' : 'NOVO PROJETO' }}</h2>
+
+      <form (ngSubmit)="saveItem()">
+        <div class="field">
+          <label>TÍTULO DO PROJETO</label>
+          <input 
+            type="text" 
+            name="title" 
+            [(ngModel)]="formModel.title" 
+            required 
+            placeholder="Ex: Clube do Livro">
+        </div>
+
+        <div class="field">
+          <label>CATEGORIA / SUBTÍTULO</label>
+          <input 
+            type="text" 
+            name="category" 
+            [(ngModel)]="formModel.category" 
+            required 
+            placeholder="Ex: Branding e design da marca">
+        </div>
+
+        <div class="field">
+          <label>IMAGEM {{ editingId ? '(Opcional: envie outra para substituir)' : '' }}</label>
+          <input 
+            type="file" 
+            accept="image/*" 
+            (change)="onFileSelected($event)">
+        </div>
+
+        <!-- Preview da Imagem Atual ou Selecionada -->
+        <div class="preview-box" *ngIf="imagePreview">
+          <img [src]="imagePreview" alt="Preview">
+        </div>
+
+        <p class="status-msg" *ngIf="statusMessage">{{ statusMessage }}</p>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-save" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'ENVIANDO...' : (editingId ? 'SALVAR ALTERAÇÕES' : 'ADICIONAR À GALERIA') }}
+          </button>
+
+          <button 
+            type="button" 
+            class="btn-cancel" 
+            *ngIf="editingId" 
+            (click)="resetForm()">
+            CANCELAR EDIÇÃO
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Coluna Direita: Lista de Projetos Cadastrados -->
+    <section class="list-section">
+      <h2>PROJETOS NA GALERIA ({{ items.length }})</h2>
+
+      <div class="items-grid">
+        <article class="item-card" *ngFor="let item of items">
+          <img [src]="item.imageUrl" [alt]="item.title">
+          
+          <div class="item-info">
+            <span class="cat">{{ item.category }}</span>
+            <h3>{{ item.title }}</h3>
+          </div>
+
+          <div class="item-actions">
+            <button type="button" class="btn-edit" (click)="startEdit(item)">Editar</button>
+            <button type="button" class="btn-delete" (click)="deleteItem(item.id)">Excluir</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
