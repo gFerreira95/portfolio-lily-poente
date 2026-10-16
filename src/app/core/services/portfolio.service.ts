@@ -2,13 +2,16 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PortfolioItem } from '../models/portfolio.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PortfolioService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:8080/api/portfolio';
+  
+  // Utiliza a URL base configurada nos environments
+  private apiUrl = `${environment.apiUrl}/portfolio`;
 
   getAll(): Observable<PortfolioItem[]> {
     return this.http.get<PortfolioItem[]>(this.apiUrl);
