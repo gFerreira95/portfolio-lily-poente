@@ -207,6 +207,28 @@
     padding-left: 0;
     margin-top: 1.5rem;
   }
+
+  .hero-center {
+      padding: 0 2rem;
+      margin-top: -10rem;
+  }
+
+  .logo-small img {
+    width: 200px; /* Aumenta o tamanho do logo no telemóvel */
+
+  }
+
+  .scroll-indicator {
+    bottom: 1.5rem;
+    right: 50%;
+    transform: translateX(50%);
+
+    .text {
+      font-size: 0.8rem;
+
+    }
+  }
+  
 }
 /* =========================================
    2. MANIFESTO (SOBRE) - LAYOUT ASSIMÉTRICO
@@ -322,7 +344,7 @@
       /* Volta o texto ao normal no telemóvel */
       writing-mode: horizontal-tb;
       transform: none;
-      font-size: 2.8rem;
+      font-size: 2rem;
       text-align: left;
     }
   }
@@ -332,6 +354,7 @@
     
     .lead-text .drop-cap {
       font-size: 3.5rem;
+      margin-bottom: -0.5rem;
     }
   }
 }
