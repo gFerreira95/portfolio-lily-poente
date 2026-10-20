@@ -127,21 +127,27 @@
   height: 100vh;
   background-color: rgba(16, 15, 13, 0.95);
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Centraliza no eixo cruzado */
   z-index: 1000;
   cursor: pointer;
-  flex-direction: column;
+ 
 }
 
 .lightbox img {
-  max-width: 70vw;
-  max-height: 70vh;
-  object-fit: contain;
+  align-self: center; /* Força a imagem a ficar no meio do flexbox */
+  width: 100%;
+  height: 100%;
+  max-width: 90vw;
+  max-height: 70vh; /* Deixa espaço para o texto por baixo */
+  object-fit: contain; /* Ajusta a foto sem a cortar */
+  object-position: center; /* Trava a foto no centro exato da tag */
   border-radius: 4px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   cursor: default;
   animation: zoomIn 0.3s ease-out forwards;
+  margin: 0; /* Remove margens que possam estar a empurrar a imagem */
 }
 
 .lightbox-info {
@@ -228,6 +234,12 @@
 @media (max-width: 992px) {
   .lightbox-info {
     display: block;
+  }
+
+  
+
+  .nav-btn  {
+    display: none; /* Oculta os botões de navegação no mobile */
   }
 }
 
