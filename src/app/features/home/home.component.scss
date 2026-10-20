@@ -16,7 +16,7 @@
 }
 
 /* =========================================
-   1. CAPA (HERO) - REDESIGN WEB MODERNO
+   1. CAPA (HERO)
    ========================================= */
 .hero-modern {
   width: 100vw;
@@ -188,14 +188,14 @@
   }
   
   .hero-nav {
-    display: none; /* Esconde o menu no telemóvel para um visual mais limpo */
+    display: none; 
   }
 
   .animate-title {
     align-items: center;
     text-align: center;
     
-    /* Remove a escada no telemóvel para não quebrar a tela */
+    
     .line-1, .line-2, .line-3 {
       padding-left: 0; 
     }
@@ -213,7 +213,7 @@
   }
 
   .logo-small img {
-    width: 200px; /* Aumenta o tamanho do logo no telemóvel */
+    width: 200px; 
 
   }
 
@@ -230,7 +230,7 @@
   
 }
 /* =========================================
-   2. MANIFESTO (SOBRE) - LAYOUT ASSIMÉTRICO
+   2. SOBRE
    ========================================= */
 .manifesto-section {
   background-color: var(--color-bg); /* O fundo creme (#f9f7e0) */
@@ -261,11 +261,11 @@
   h2 {
     font-family: 'Helvetica World', 'Helvetica', 'Arial', sans-serif;
     font-size: 3.5rem;
-    color: var(--color-wine); /* Cor Vinho/Bordô */
+    color: var(--color-wine); 
     margin: 0;
     line-height: 0.9;
     
-    /* Roda o texto a 90 graus (lê-se de baixo para cima) */
+    /* Roda o texto a 90 graus para ficar na vertical */
     writing-mode: vertical-rl;
     transform: rotate(180deg); 
     white-space: nowrap;
@@ -323,7 +323,7 @@
 }
 
 /* =========================================
-   RESPONSIVO MOBILE (MANIFESTO)
+   RESPONSIVO MOBILE SOBRE
    ========================================= */
 @media (max-width: 900px) {
   .manifesto-container {
@@ -340,7 +340,7 @@
     flex: auto;
 
     h2 {
-      /* Volta o texto ao normal no telemóvel */
+    
       writing-mode: horizontal-tb;
       transform: none;
       font-size: 2rem;
@@ -357,12 +357,132 @@
     }
   }
 }
+
 /* =========================================
-   4. CONTATO (RODAPÉ)
+   3. SERVIÇOS
+   ========================================= */
+.services-section {
+  background-color: var(--color-bg, #f9f7e0);
+  padding: 6rem 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 5rem;
+
+  h2 {
+    font-family: 'Helvetica World', 'Helvetica', 'Arial', sans-serif;
+    font-size: 3rem;
+    color: var(--color-wine, #9e4251);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 3rem 2rem;
+}
+
+/* Cartões de Serviço Estilo Editorial */
+.service-item {
+  position: relative;
+  border-top: 3px solid var(--color-dark, #100f0d);
+  padding: 2.5rem 1.5rem 1.5rem 0; /* O padding extra no topo afasta o texto da linha preta */
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: default;
+  overflow: hidden; /* Impede que o número gigante saia para fora do bloco */
+
+  /* O Número Gigante no Fundo */
+  .service-number {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    font-family: 'Helvetica World', 'Helvetica', sans-serif;
+    font-size: 8rem;
+    font-weight: bold;
+    color: var(--color-accent, #c1c067); /* Cor mostarda */
+    opacity: 0.15; /* Quase transparente, como uma marca de água */
+    line-height: 1;
+    transition: transform 0.5s ease, color 0.3s ease, opacity 0.3s ease;
+    z-index: 0;
+  }
+
+  .service-content {
+    position: relative;
+    z-index: 1; 
+
+    h3 {
+      font-family: 'Helvetica World', 'Helvetica', sans-serif;
+      font-size: 1.5rem;
+      color: var(--color-wine, #9e4251);
+      margin: 0 0 1rem 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+
+    p {
+      font-family: 'Placard Next', 'Helvetica', sans-serif;
+      font-size: 1.1rem;
+      color: var(--color-dark, #100f0d);
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  /* Efeito Interativo (Hover) */
+  &:hover {
+    transform: translateY(-8px); /* O cartão sobe um pouco */
+    border-top-color: var(--color-accent, #c1c067); /* A linha preta fica mostarda */
+
+    /* O número gigante ganha vida: fica cor de vinho, mais visível e move-se um pouco */
+    .service-number {
+      transform: scale(1.1) translate(-10px, 10px);
+      opacity: 0.3;
+      color: var(--color-wine, #9e4251);
+    }
+  }
+}
+
+/* =========================================
+   RESPONSIVO MOBILE - SERVIÇOS
+   ========================================= */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 4rem 4vw;
+  }
+  
+  .services-header {
+    margin-bottom: 3.5rem;
+    
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  .services-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* =========================================
+   5. CONTATO (RODAPÉ)
    ========================================= */
 .contact-section {
   /* Fundo mostarda/verde oliva, conforme a referência */
-  background-color: #c1c067; 
+  background-color: #9e4251; 
   min-height: 70vh; /* Dá uma boa área de respiro ao rodapé */
   display: flex;
   align-items: center;
@@ -380,17 +500,27 @@
 }
 
 /* Título Gigante */
-.contact-header {
+.contact-header { 
+ 
   h2 {
     font-family: 'Helvetica World', 'Helvetica', 'Arial', sans-serif;
     /* Tamanho fluido que se adapta a ecrãs grandes e pequenos */
-    font-size: clamp(4rem, 8vw, 8rem);
+    font-size: clamp(3rem, 5vw, 5rem);
     color: #f9f7e0; /* Creme claro */
     margin: 0;
     font-weight: 700;
     letter-spacing: 2px;
     line-height: 1;
   }
+  p {
+    font-family: 'Placard Next', 'Helvetica', sans-serif;
+    font-size: 1.4rem;
+    color: #f9f7e0; /* Creme claro */
+    margin-top: 1rem;
+   
+    letter-spacing: 1px;
+    margin-left: 20px;
+  };
 }
 
 /* Organização dos Contactos */
@@ -415,7 +545,7 @@
   .label {
     font-family: 'Placard Next', 'Helvetica', sans-serif;
     font-size: 1.1rem;
-    color: #9e4251; /* Tom vinho */
+    color: #FDFCE4; /* Tom vinho */
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 600;
@@ -424,7 +554,7 @@
   .value {
     font-family: 'Placard Next', 'Helvetica', sans-serif;
     font-size: 2.2rem;
-    color: #9e4251; /* Tom vinho */
+    color: #FDFCE4; /* Tom vinho */
     text-decoration: none; /* Remove o sublinhado padrão dos links */
     transition: opacity 0.3s ease, transform 0.3s ease;
     
