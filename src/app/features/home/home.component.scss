@@ -48,11 +48,10 @@
   width: 90px; /* Logo discreto como marca do site */
   height: auto;
   transition: transform 0.3s ease;
-  
-  &:hover { 
-    transform: scale(1.05); 
-  }
+
 }
+
+
 
 .hero-nav {
   display: flex;
@@ -61,7 +60,7 @@
   a {
     font-family: 'Placard Next', 'Helvetica', sans-serif;
     font-size: 1.1rem;
-    color: var(--color-wine, #9e4251); /* Tom vinho */
+    color: #FDFCE4; /* Tom vinho */
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -116,7 +115,7 @@
 .animate-subtitle {
   font-family: 'Placard Next', 'Helvetica', sans-serif;
   font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-  color: var(--color-wine, #9e4251);
+  color:  #c1c067;
   margin-top: 2rem;
   transform: translateX(50%);
   opacity: 0;
