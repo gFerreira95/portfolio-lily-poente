@@ -10,7 +10,7 @@
          (click)="openLightbox(i)">
       
       <div class="image-wrapper">
-        <img [src]="item.imageUrl" [alt]="item.title">
+        <img [src]="item.imageUrl" [alt]="item.title" (contextmenu)="$event.preventDefault()">
         <div class="overlay">
           <span class="category">{{ item.category }}</span>
           <h3>{{ item.title }}</h3>
@@ -52,7 +52,7 @@
   <!-- Conteúdo Central -->
   <div class="lightbox-content" (click)="$event.stopPropagation()">
     <!-- Usamos portfolioItems[currentIndex] para puxar a imagem certa -->
-    <img [src]="portfolioItems[currentIndex].imageUrl" alt="Imagem ampliada">
+    <img [src]="portfolioItems[currentIndex].imageUrl" alt="Imagem ampliada" (contextmenu)="$event.preventDefault()">
     
     <div class="lightbox-info">
       <span class="category">{{ portfolioItems[currentIndex].category }}</span>
