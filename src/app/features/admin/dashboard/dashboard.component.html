@@ -29,12 +29,24 @@
 
         <div class="field">
           <label>CATEGORIA / SUBTÍTULO</label>
+          <select 
+            name="categoryDropdown" 
+            [(ngModel)]="selectedCategoryDropdown" 
+            (change)="onCategoryChange()" 
+            required>
+            <option value="" disabled selected>Selecione uma categoria...</option>
+            <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+            <option value="NEW">+ Adicionar nova categoria...</option>
+          </select>
+
           <input 
+            *ngIf="isNewCategory"
             type="text" 
             name="category" 
             [(ngModel)]="formModel.category" 
             required 
-            placeholder="Ex: Branding e design da marca">
+            placeholder="Digite a nova categoria..."
+            class="input-new-category">
         </div>
 
         <div class="field">

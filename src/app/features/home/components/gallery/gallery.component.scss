@@ -22,6 +22,84 @@
 }
 
 /* =========================================
+   ESTILO WINDOWS EXPLORER / NAVEGADOR (ABAS)
+   ========================================= */
+
+/* A "Janela" principal que segura tudo */
+.folder-window {
+  background-color: #FDFCE4; /* Cor de fundo do interior da pasta */
+  border: 1px solid rgba(158, 66, 81, 0.2); /* Borda vinho muito suave */
+  border-radius: 8px; /* Cantos arredondados estilo Win11 */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Sombra flutuante */
+  max-width: 1400px;
+  margin: 0 auto 4rem auto;
+  overflow: hidden;
+}
+
+/* A barra superior onde ficam as abas */
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap; /* O SEGREDO: Permite que as abas desçam para a próxima linha */
+  justify-content: center; /* Centraliza as abas perfeitamente */
+  gap: 8px; /* Dá um espaço uniforme entre as abas em todas as direções */
+  padding: 12px;
+  background-color: rgba(16, 15, 13, 0.03);
+  border-bottom: 1px solid rgba(158, 66, 81, 0.2);
+}
+
+/* O design de cada Aba (Tab) */
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid transparent; 
+  color: var(--color-dark, #100f0d);
+  padding: 8px 20px;
+  font-family: 'Helvetica World', 'Helvetica', sans-serif;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  
+  /* Arredonda todos os cantos para criar o efeito de aba flutuante */
+  border-radius: 6px; 
+  transition: all 0.2s ease;
+
+  /* Ícone da pasta normal */
+  .folder-icon {
+    width: 16px;
+    height: 16px;
+    stroke: var(--color-accent, #c1c067); 
+    transition: all 0.3s ease;
+  }
+
+  /* Efeito Hover (passar o rato numa aba inativa) */
+  &:hover:not(.active) {
+    background-color: rgba(158, 66, 81, 0.06); 
+  }
+
+  /* A ABA SELECIONADA (ATIVA) */
+  &.active {
+    background-color: #FDFCE4; /* Cor da janela */
+    border: 1px solid rgba(158, 66, 81, 0.2); /* Borda completa */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); /* Sombreado leve que faz a aba "saltar" */
+    color: var(--color-wine, #9e4251);
+    font-weight: bold;
+
+    /* O ícone da pasta preenche-se quando a aba abre */
+    .folder-icon {
+      stroke: var(--color-wine, #9e4251);
+      fill: rgba(158, 66, 81, 0.1); 
+    }
+  }
+}
+/* Espaçamento interno de onde ficam as fotos */
+.folder-content {
+  padding: 3rem 2vw; /* Dá um respiro entre a borda da janela e as fotos */
+}
+
+/* =========================================
    DESKTOP: MASONRY GRID (Estilo Pinterest)
    ========================================= */
 .gallery-wrapper {

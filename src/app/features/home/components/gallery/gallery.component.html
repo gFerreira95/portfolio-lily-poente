@@ -3,21 +3,43 @@
     <h2>NOSSO PORTFÓLIO</h2>
   </div>
 
-  <div class="gallery-wrapper">
-    <!-- Usamos let i = index para saber qual imagem foi clicada -->
-    <div class="portfolio-item" 
-         *ngFor="let item of portfolioItems; let i = index" 
-         (click)="openLightbox(i)">
-      
-      <div class="image-wrapper">
-        <img [src]="item.imageUrl" [alt]="item.title" (contextmenu)="$event.preventDefault()">
-        <div class="overlay">
-          <span class="category">{{ item.category }}</span>
-          <h3>{{ item.title }}</h3>
+  <div class="folder-window">
+    
+    <!-- Barra Superior (Abas) -->
+    <div class="gallery-filters">
+      <button *ngFor="let cat of categories" 
+              class="filter-btn" 
+              [class.active]="cat === selectedCategory"
+              (click)="filterByCategory(cat)">
+        
+        <!-- Ícone de Pasta minimalista -->
+        <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        </svg>
+        
+        {{ cat }}
+      </button>
+    </div>
+
+    <!-- Conteúdo da Pasta (A sua Galeria) -->
+    <div class="folder-content">
+      <div class="gallery-wrapper">
+        <div class="portfolio-item" 
+             *ngFor="let item of portfolioItems; let i = index" 
+             (click)="openLightbox(i)">
+          
+          <div class="image-wrapper">
+            <img [src]="item.imageUrl" [alt]="item.title" (contextmenu)="$event.preventDefault()">
+            <div class="overlay">
+              <span class="category">{{ item.category }}</span>
+              <h3>{{ item.title }}</h3>
+            </div>
+          </div>
+          
         </div>
       </div>
-      
     </div>
+
   </div>
 </section>
 

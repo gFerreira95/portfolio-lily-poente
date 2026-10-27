@@ -25,6 +25,10 @@ export class AdminDashboardComponent implements OnInit {
   isSubmitting = false;
   statusMessage = '';
 
+  categories: string[] = [];
+  selectedCategoryDropdown: string = '';
+  isNewCategory = false;
+
   editingId: string | null = null;
   formModel: PortfolioItem = {
     title: '',
@@ -44,6 +48,8 @@ export class AdminDashboardComponent implements OnInit {
     this.portfolioService.getAll().subscribe({
       next: (data) => {
         this.items = data;
+        const uniqueCategories = new Set(data.map(item => item.category).filter(c => c));
+        this.categories = Array.from(uniqueCategories);
         this.cdr.detectChanges();
       },
       error: () => {
@@ -51,6 +57,16 @@ export class AdminDashboardComponent implements OnInit {
         this.cdr.detectChanges();
       }
     });
+  }
+
+  onCategoryChange(): void {
+    if (this.selectedCategoryDropdown === 'NEW') {
+      this.isNewCategory = true;
+      this.formModel.category = ''; // Limpa para o utilizador digitar a nova
+    } else {
+      this.isNewCategory = false;
+      this.formModel.category = this.selectedCategoryDropdown; // Assume a categoria escolhida
+    }
   }
 
   onFileSelected(event: Event): void {
@@ -73,6 +89,13 @@ export class AdminDashboardComponent implements OnInit {
     this.imagePreview = item.imageUrl;
     this.selectedFile = null;
     this.statusMessage = '';
+    if (this.categories.includes(item.category)) {
+      this.selectedCategoryDropdown = item.category;
+      this.isNewCategory = false;
+    } else {
+      this.selectedCategoryDropdown = 'NEW';
+      this.isNewCategory = true;
+    }
     this.cdr.detectChanges();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

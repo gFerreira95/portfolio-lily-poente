@@ -16,12 +16,18 @@ export class GalleryComponent {
 
   private cdr = inject(ChangeDetectorRef);
 
+  // Guarda todos os itens intocados
+  allPortfolioItems: PortfolioItem[] = [];
 
-  // Array para armazenar os itens do portfólio
+
+  // Array para armazenar os itens do portfólio da aba atual
   portfolioItems: PortfolioItem[] = [];
   
   // Index atual do array
   currentIndex: number | null = null;
+  // Abas de categoria
+  categories: string[] = ['Todos'];
+  selectedCategory: string = 'Todos';
 
   // Variáveis para o swipe
   touchStartX = 0;
@@ -30,10 +36,28 @@ export class GalleryComponent {
   ngOnInit(): void {
     this.portfolioService.getAll().subscribe({
       next: (data) => {
-        this.portfolioItems = data;
+        this.allPortfolioItems = data;
+        this.portfolioItems = [...data];
+        // Extrai as categorias únicas sem repetição
+        const uniqueCategories = new Set(data.map(item => item.category));
+        this.categories = ['Todos', ...Array.from(uniqueCategories)];
         this.cdr.detectChanges(); 
       }
     });
+  }
+
+  // Função disparada ao clicar numa aba
+  filterByCategory(category: string): void {
+    this.selectedCategory = category;
+    
+    if (category === 'Todos') {
+      this.portfolioItems = [...this.allPortfolioItems];
+    } else {
+      this.portfolioItems = this.allPortfolioItems.filter(item => item.category === category);
+    }
+    
+    this.currentIndex = null; // Fecha o lightbox por segurança ao trocar de aba
+    this.cdr.detectChanges();
   }
 
   openLightbox(index: number): void {

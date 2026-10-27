@@ -101,7 +101,8 @@
     }
 
     input[type="text"],
-    input[type="file"] {
+    input[type="file"],
+    select {
       font-family: 'Helvetica World', 'Helvetica', sans-serif;
       padding: 0.75rem;
       background-color: #f9f7e0;
@@ -109,6 +110,17 @@
       border: none;
       border-radius: 4px;
       font-size: 0.95rem;
+      width: 100%;
+      box-sizing: border-box;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Estilo para quando o input novo aparecer logo abaixo do select */
+    .input-new-category {
+      margin-top: 0.8rem;
+      border: 2px solid #c1c067 !important; /* Destaca que é uma categoria nova */
+      cursor: text !important;
     }
   }
 
