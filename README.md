@@ -1,59 +1,108 @@
-# LilyPoente
+ Lily Poente Studio - Front-end
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+Este é o repositório front-end do portfólio oficial do Lily Poente Studio. Uma aplicação web moderna, focada em alta performance, experiência de utilizador (UX) premium e design editorial.
 
-## Development server
+O projeto foi desenvolvido utilizando as mais recentes abordagens do ecossistema Angular (Standalone Components e modo Zoneless), garantindo um carregamento ultrarrápido e uma arquitetura limpa.
 
-To start a local development server, run:
+ Funcionalidades Destacadas
 
-```bash
+Galeria Estilo "Folder" (Windows 11): Navegação por categorias utilizando um design imersivo de abas flutuantes e ícones dinâmicos.
+
+Lightbox Customizado e Responsivo:
+
+Navegação por setas no Desktop.
+
+Suporte a gestos de arrasto (Swipe) nativo no Mobile.
+
+Centralização inteligente com object-fit para diferentes proporções de imagem.
+
+Painel Administrativo Seguro (CMS Interno):
+
+Autenticação via token JWT.
+
+Upload de imagens com integração direta ao Cloudinary.
+
+Gestão inteligente de categorias (Dropdown dinâmico com criação de novas categorias em tempo real).
+
+Proteção de Conteúdo: Bloqueio de clique direito (contextmenu) e função de arrastar/selecionar desativada via CSS para dificultar o download não autorizado das artes.
+
+Integração Direta via WhatsApp: Links de contato otimizados com a API oficial (wa.me).
+
+🛠️ Tecnologias Utilizadas
+
+Framework: Angular 17+ (Standalone Components)
+
+Reatividade: RxJS & Modo Zoneless (uso explícito de ChangeDetectorRef)
+
+Estilização: SCSS (CSS Grid, Flexbox, Animações CSS puras, sem bibliotecas externas pesadas)
+
+Hospedagem & CI/CD: Cloudflare Pages
+
+Integrações: Cloudinary API (Imagens) e Spring Boot API (Back-end)
+
+🚀 Como Executar o Projeto Localmente
+
+Pré-requisitos
+
+Node.js (versão 18 ou superior)
+
+Angular CLI instalado globalmente (npm install -g @angular/cli)
+
+Passos para Instalação
+
+Clone o repositório:
+
+git clone https://github.com/seu-usuario/lily-poente-frontend.git
+
+
+Entre no diretório do projeto:
+
+cd lily-poente-frontend
+
+
+Instale as dependências:
+
+npm install
+
+
+Configure as variáveis de ambiente:
+Crie ou edite o arquivo src/environments/environment.ts com a URL da sua API (Spring Boot hospedado na Oracle Cloud) e as credenciais do Cloudinary:
+
+export const environment = {
+  production: false,
+  apiUrl: 'https://seu-ip.sslip.io/api',
+  cloudinaryCloudName: 'seu-cloud-name',
+  cloudinaryUploadPreset: 'seu-upload-preset'
+};
+
+
+Inicie o servidor de desenvolvimento:
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+A aplicação estará disponível em http://localhost:4200/.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+📦 Deploy e Build (Cloudflare Pages)
 
-```bash
-ng generate component component-name
-```
+Este projeto está otimizado para deploy no Cloudflare Pages.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Comando de Build: ng build --configuration production
 
-```bash
-ng generate --help
-```
+Diretório de Saída: dist/lily-poente/browser
 
-## Building
+Nota sobre Budgets do Angular:
+Devido ao design One-Page que concentra o CSS no componente principal, os limites de budget do angular.json foram ajustados para permitir arquivos de estilo maiores sem falhas no build do Cloudflare:
 
-To build the project run:
+"budgets": [
+  {
+    "type": "anyComponentStyle",
+    "maximumWarning": "15kb",
+    "maximumError": "20kb"
+  }
+]
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+📝 Licença
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Desenvolvido exclusivamente para o uso do Lily Poente Studio.
